@@ -20,7 +20,7 @@ SmokeySpoofer is an advanced HWID (Hardware Identification) spoofer designed for
 
 3. **Select Hardware Components**: Choose the hardware components you wish to spoof from the available options.
 
-4. **Spoof HWID**: Click the "Spoof" button to initiate the spoofing process. SmokeySpoofer will generate a new HWID based on the selected components.
+4. **Spoof HWID**: Click the "Spoof" button to initiate the spoofing process. SmokeySpoofer will generate a new HWIDs based on the selected components.
 
 5. **Restart**: After spoofing, it is recommended to restart your system to apply the changes effectively.
 
@@ -31,7 +31,3 @@ SmokeySpoofer is intended for educational and testing purposes only. The misuse 
 ## Contributing
 
 Contributions to SmokeySpoofer are welcome! If you have any suggestions, bug reports, or feature requests, feel free to open an issue or submit a pull request.
-
-## License
-
-SmokeySpoofer is licensed under the [MIT License](LICENSE).
