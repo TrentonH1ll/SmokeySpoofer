@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,25 +42,6 @@ namespace SmokeySpoofer
                 {
                     Directory.Delete(path, true);
                     console.AppendText($"\nFound & Deleted -> {path}");
-                }
-            } catch { }
-        }
-        private void DeleteRegistryKey(string keyPath)
-        {
-            try
-            {
-                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyPath, true))
-                {
-                    if (key != null)
-                    {
-                        foreach (string subKeyName in key.GetSubKeyNames())
-                        {
-                            key.DeleteSubKeyTree(subKeyName);
-                            console.AppendText($"\nFound & Deleted -> {subKeyName}");
-                        }
-                        Registry.LocalMachine.DeleteSubKey(keyPath, false);
-                        console.AppendText($"\nFound & Deleted -> {keyPath}");
-                    }
                 }
             } catch { }
         }
@@ -102,7 +84,7 @@ namespace SmokeySpoofer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) // Mini Spoof
+        private void button1_Click(object sender, EventArgs e) // Clean Traces
         {
             try
             {
@@ -146,18 +128,10 @@ namespace SmokeySpoofer
                 DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Roaming\\Battle.net"));
                 DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Battle.net"));
                 DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Blizzard Entertainment"));
-                // Easy Anti Cheat (EAC) // DeleteRegisteryKey might not be working..
-                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
-                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat");
-                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat\\Security");
-                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
-                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat");
-                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
-                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat_EOS");
-                // FiveM
                 string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat");
                 using (StreamWriter writer = new StreamWriter(tempFilename))
                 {
+                    // GTAV/FiveM
                     writer.WriteLine(@"echo off");
                     writer.WriteLine("cls");
                     writer.WriteLine("taskkill /f /im Steam.exe /t");
@@ -196,8 +170,46 @@ namespace SmokeySpoofer
                     writer.WriteLine("cls");
                     writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 1282084573 - 1681065996 - 3115981261 - 1001 / f");
                     writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched / f");
+                    // (EAC) EasyAntiCheat
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\EasyAntiCheat / f");
                     writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\EasyAntiCheat_EOS / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\EasyAntiCheat / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\EasyAntiCheat_EOS / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\EasyAntiCheat\Security / f");
+                    writer.WriteLine("cls");
+                    // Fortnite
+                    writer.WriteLine("taskkill /f /im epicgameslauncher.exe");
+                    writer.WriteLine("taskkill /f /im EpicWebHelper.exe");
+                    writer.WriteLine("taskkill /f /im FortniteClient-Win64-Shipping_EAC.exe");
+                    writer.WriteLine("taskkill /f /im FortniteClient-Win64-Shipping_BE.exe");
+                    writer.WriteLine("taskkill /f /im FortniteLauncher.exe");
+                    writer.WriteLine("taskkill /f /im FortniteClient-Win64-Shipping.exe");
+                    writer.WriteLine("taskkill /f /im EpicGamesLauncher.exe");
+                    writer.WriteLine("taskkill /f /im EasyAntiCheat.exe");
+                    writer.WriteLine("taskkill /f /im BEService.exe");
+                    writer.WriteLine("taskkill /f /im BEServices.exe");
+                    writer.WriteLine("taskkill /f /im BattleEye.exe");
+                    writer.WriteLine("taskkill /f /im x64dbg.exe");
+                    writer.WriteLine("taskkill /f /im x32dbg.exe");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\Software\\Epic Games\" /f");
+                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Epic Games\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\Software\\Epic Games\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\com.epicgames.launcher\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\EpicGames\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\" /f");
+                    writer.WriteLine("reg delete \"HKEY_CLASSES_ROOT\\com.epicgames.launcher\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\Software\\Epic Games\" /f");
+                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Classes\\com.epicgames.launcher\" /f");
+                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Epic Games\\Unreal Engine\\Hardware Survey\" /f");
+                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Epic Games\\Unreal Engine\\Identifiers\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\com.epicgames.launcher\" /f");
+                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\EpicGames\" /f");
+                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\SOFTWARE\\EpicGames\" /f");
+                    writer.WriteLine("reg delete \"HKEY_USERS\\" + WindowsIdentity.GetCurrent().User.Value + "\\Software\\Epic Games\" /f");
                 }
                 Process process = Process.Start(tempFilename);
                 process.WaitForExit();
@@ -207,7 +219,7 @@ namespace SmokeySpoofer
             catch 
             {
                 console.Clear();
-                console.AppendText("Mini Spoof Failed.. Please Try Again and or Run as Admin!");
+                console.AppendText("Clean Traces Failed.. Please Try Again and or Run as Admin!");
             }
         }
 
@@ -217,12 +229,62 @@ namespace SmokeySpoofer
             {
                 console.Clear();
                 console.AppendText("Scanning Local System.. Please Wait!");
-                
+                // Windows Profile GUID/HWID
+                console.AppendText($"\nHWID Found: {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")}");
+                // Windows PC/Machine GUID/HWID
+                console.AppendText($"\nHWID Found: {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)}");
+                // Windows PC/Machine ID/HWID
+                console.AppendText($"\nHWID Found: {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")}");
+                // Windows Product ID/HWID
+                console.AppendText($"\nHWID Found: {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ProductID", null)}");
+                // Windows PC/Machine Hardware IDs
+                console.AppendText($"\nHWID Found: {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")}");
+                string[] HardwareIds = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
+                StringBuilder Builder = new StringBuilder();
+                foreach (string HardwareId in HardwareIds)
+                {
+                    string FormattedId = $"HWID Found: {HardwareId.Trim().Replace("{", "").Replace("}", "")}";
+                    Builder.AppendLine(FormattedId);
+                }
+                console.AppendText("\n" + Builder.ToString());
+                // Windows Update GUID/HWID
+                console.AppendText($"\nHWID Found: {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate", "SusClientId", null).ToString()}");
+                // TODO: Add Hard Drive/SSD HWIDs
             }
             catch 
             {
                 console.Clear();
                 console.AppendText("Listing HWIDs Failed.. Please Try Again and or Run as Admin!");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e) // Spoof HWIDs
+        {
+            try
+            {
+                console.Clear();
+                console.AppendText("Scanning Local System.. Please Wait!");
+
+            }
+            catch
+            {
+                console.Clear();
+                console.AppendText("Proxy IP Failed.. Please Try Again and or Run as Admin!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e) // Proxy IP
+        {
+            try
+            {
+                console.Clear();
+                console.AppendText("Coming Soon!");
+
+            }
+            catch
+            {
+                console.Clear();
+                console.AppendText("Proxy IP Failed.. Please Try Again and or Run as Admin!");
             }
         }
     }
