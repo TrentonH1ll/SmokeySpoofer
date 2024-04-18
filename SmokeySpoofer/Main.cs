@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,36 @@ namespace SmokeySpoofer
             int nWidthEllipse,
             int nHeightEllipse
         );
+        private void DeleteDirectory(string path)
+        {
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    Directory.Delete(path, true);
+                    console.AppendText($"\nFound & Deleted -> {path}");
+                }
+            } catch { }
+        }
+        private void DeleteRegistryKey(string keyPath)
+        {
+            try
+            {
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyPath, true))
+                {
+                    if (key != null)
+                    {
+                        foreach (string subKeyName in key.GetSubKeyNames())
+                        {
+                            key.DeleteSubKeyTree(subKeyName);
+                            console.AppendText($"\nFound & Deleted -> {subKeyName}");
+                        }
+                        Registry.LocalMachine.DeleteSubKey(keyPath, false);
+                        console.AppendText($"\nFound & Deleted -> {keyPath}");
+                    }
+                }
+            } catch { }
+        }
         public Main()
         {
             InitializeComponent();
@@ -71,59 +102,122 @@ namespace SmokeySpoofer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://discord.gg/pbEwTG4BrC");
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // Mini Spoof
         {
             try
             {
                 console.Clear();
                 console.AppendText("Scanning Local System.. Please Wait!");
-                // Motherboard
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
-                foreach (ManagementObject motherboard in searcher.Get())
+                // Blizzard/Battle.net
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Blizzard Entertainment"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Blizzard Entertainment"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_0.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_1.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_2.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_3.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\f_000001.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\index.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\index"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_0"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_1"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_2"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_3"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\f_000001"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\index"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\index.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_0.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_1.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_2.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_3.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_0"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_1"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_2"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_3"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\Cache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\Logs"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\WidevineCdm"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\CachedData"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Blizzard Entertainment"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Roaming\\Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Blizzard Entertainment"));
+                // Easy Anti Cheat (EAC) // DeleteRegisteryKey might not be working..
+                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat\\Security");
+                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat");
+                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat_EOS");
+                // FiveM
+                string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat");
+                using (StreamWriter writer = new StreamWriter(tempFilename))
                 {
-                    string serialNumber = motherboard["SerialNumber"].ToString();
-                    console.AppendText($"\nMotherboard Serial Number: {serialNumber}");
-                    searcher.Dispose();
-                    motherboard.Dispose();
+                    writer.WriteLine(@"echo off");
+                    writer.WriteLine("cls");
+                    writer.WriteLine("taskkill /f /im Steam.exe /t");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"set hostspath=%windir%\System32\drivers\etc\hosts");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSLicensing\HardwareID / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSLicensing\Store / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\WinRAR\ArcHistory / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 1282084573 - 1681065996 - 3115981261 - 1001 / va / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETEH KEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\ShowJumpView / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETEH KEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\WinRAR\ArcHistory / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\ShowJumpView / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 332004695 - 2829936588 - 140372829 - 1002 / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 1282084573 - 1681065996 - 3115981261 - 1001 / f");
+                    writer.WriteLine("cls");
+                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched / f");
+                    writer.WriteLine("cls");
                 }
-                // CPU
-                ManagementObjectSearcher searcher2 = new ManagementObjectSearcher("SELECT ProcessorID FROM Win32_Processor");
-                ManagementObjectCollection collection = searcher2.Get();
-                Console.WriteLine("CPU Serial Numbers:");
-                foreach (ManagementObject obj in collection)
-                {
-                    string cpuSerialNumber = obj["ProcessorID"].ToString();
-                    console.AppendText($"\nCPU Serial Number: {cpuSerialNumber}");
-                    searcher2.Dispose();
-                    collection.Dispose();
-                    obj.Dispose();
-                }
-                // RAM
-                ManagementObjectSearcher searcher3 = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
-                ManagementObjectCollection results = searcher3.Get();
-                foreach (ManagementObject obj2 in results)
-                {
-                    string serialNumber = obj2["SerialNumber"].ToString();
-                    console.AppendText("\nRAM Serial Number: " + serialNumber);
-                    searcher3.Dispose();
-                    results.Dispose();
-                    obj2.Dispose();
-                }
-                // Hard Drives/SSDs
-                ManagementObjectSearcher searcher4 = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
-                foreach (ManagementObject disk in searcher4.Get())
-                {
-                    string serialNumber = disk["SerialNumber"]?.ToString();
-                    console.AppendText($"\nHard Drive/SSD Serial Number: {serialNumber}");
-                    searcher4.Dispose();
-                    disk.Dispose();
-                }
-                //
+                Process process = Process.Start(tempFilename);
+                process.WaitForExit();
+                File.Delete(tempFilename);
+                console.AppendText("\nAll Traces Have Been Deleted If Any Were Found!");
+            }
+            catch 
+            {
+                console.Clear();
+                console.AppendText("Mini Spoof Failed.. Please Try Again and or Run as Admin!");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e) // List HWIDs
+        {
+            try
+            {
+                console.Clear();
+                console.AppendText("Scanning Local System.. Please Wait!");
+                
             }
             catch 
             {
