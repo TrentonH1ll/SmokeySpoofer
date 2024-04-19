@@ -239,7 +239,7 @@ namespace SmokeySpoofer
             try
             {
                 console.Clear();
-                console.AppendText("Scanning Local System.. Please Wait!");
+                console.AppendText("Scanning Local System.. Please Wait!\n");
                 // Windows Profile GUID/HWID
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")}");
                 // Windows PC/Machine GUID/HWID
@@ -275,53 +275,56 @@ namespace SmokeySpoofer
             try
             {
                 console.Clear();
-                console.AppendText("Scanning Local System.. Please Wait!");
+                console.AppendText("Scanning Local System.. Please Wait!\n");
                 // Windows Profile GUID/HWID
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!");
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}");
+                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!\n");
                 // Windows PC/Machine GUID/HWID
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)} - Spoofing..");
                 Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)} - Spoofed!");
+                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)} - Spoofed!\n");
                 // Windows PC/Machine ID/HWID
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!");
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}");
+                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!\n");
                 // Windows Product ID/HWID
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", null)} - Spoofing..");
                 Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", $"{RandomString(5)}-{RandomString(5)}-{RandomString(5)}-{RandomString(5)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", null)} - Spoofed!");
+                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", null)} - Spoofed!\n");
                 // Windows Update GUID/HWID
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", null).ToString()} - Spoofing..");
                 Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", null).ToString()} - Spoofed!");
+                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", null).ToString()} - Spoofed!\n");
                 // Windows PC/Machine Hardware IDs
                 console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!");          
+                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}");
+                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!\n");          
                 // List all the Hardware IDs/HWIDs
-                string[] HardwareIds = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
+                string[] HardwareIds1 = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
                 StringBuilder Builder = new StringBuilder();
-                foreach (string HardwareId1 in HardwareIds)
+                foreach (string HardwareId1 in HardwareIds1)
                 {
                     string FormattedId = $"HWID Found -> {HardwareId1.Trim().Replace("{", "").Replace("}", "")} - Spoofing..";
                     Builder.AppendLine(FormattedId);
                 }
                 console.AppendText("\n" + Builder.ToString());
                 // Spoof the IDs/HWIDs we Found
-                StringBuilder builder = new StringBuilder();
-                foreach (string hardwareId2 in HardwareIds)
+                string[] hardwareIds = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
+                if (hardwareIds != null)
                 {
-                    string formattedId = $"HWID Found -> {hardwareId2.Trim().Replace("{", "").Replace("}", "")}";
-                    builder.AppendLine(formattedId);
+                    for (int i = 0; i < hardwareIds.Length; i++)
+                    {
+                        hardwareIds[i] = "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}";
+                    }
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", hardwareIds, RegistryValueKind.MultiString);
                 }
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", ModifyEachLine(builder.ToString()));
                 // ReList all the Hardware IDs/HWIDs that are now Spoofed!
+                string[] HardwareIds2 = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
                 StringBuilder Builder2 = new StringBuilder();
-                foreach (string HardwareId3 in HardwareIds)
+                foreach (string HardwareId3 in HardwareIds2)
                 {
-                    string FormattedId = $"HWID Found -> {HardwareId3.Trim().Replace("{", "").Replace("}", "")} - Spoofed!";
+                    string FormattedId = $"New HWID -> {HardwareId3.Trim().Replace("{", "").Replace("}", "")} - Spoofed!";
                     Builder2.AppendLine(FormattedId);
                 }
                 console.AppendText("\n" + Builder2.ToString());
@@ -347,19 +350,6 @@ namespace SmokeySpoofer
                 console.Clear();
                 console.AppendText("Proxy IP Failed.. Please Try Again and or Run as Admin!");
             }
-        }
-
-        static string ModifyEachLine(string input)
-        {
-            string[] lines = input.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder modifiedBuilder = new StringBuilder();
-            Random random = new Random();
-            foreach (string line in lines)
-            {
-                string newHwid = $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}";
-                modifiedBuilder.AppendLine(newHwid);
-            }
-            return modifiedBuilder.ToString();
         }
     }
 }
