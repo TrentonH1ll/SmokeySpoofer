@@ -62,11 +62,6 @@ namespace SmokeySpoofer
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);

@@ -166,8 +166,7 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SmokeySpooferV1.0";
-            this.Load += new System.EventHandler(this.Main_Load);
+            this.Text = "SmokeySpoofer";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Main_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
