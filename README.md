@@ -24,6 +24,9 @@ SmokeySpoofer is an advanced HWID (Hardware Identification) spoofer designed for
 
 5. **Restart**: After spoofing, it is recommended to restart your system to apply the changes effectively.
 
+![UI Preview](one.PNG)
+![UI Preview](two.PNG)
+
 ## Disclaimer
 
 SmokeySpoofer is intended for educational and testing purposes only. The misuse of this software to violate the terms of service of any application or game is strictly prohibited. The developers of SmokeySpoofer are not responsible for any consequences resulting from the use of this software.
