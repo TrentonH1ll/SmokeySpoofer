@@ -1,4 +1,5 @@
-# SmokeySpoofer
+# [SmokeySpoofer.top](https://smokeyspoofer.top/)
+# This Is Outdated & No Longer Being Updated.. Newer Version Linked Above ^
 
 SmokeySpoofer is an advanced HWID (Hardware Identification) spoofer designed for Windows 10 and 11. It allows users to change their hardware identification information, providing an effective way to bypass hardware bans in various applications and games.
 
