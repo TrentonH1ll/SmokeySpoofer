@@ -97,125 +97,13 @@ namespace SmokeySpoofer
                 console.Clear();
                 console.AppendText("Scanning Local System.. Please Wait!");
                 // Blizzard/Battle.net
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Blizzard Entertainment"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Battle.net"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Battle.net"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Blizzard Entertainment"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_0.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_1.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_2.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_3.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\f_000001.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\index.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\index"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_0"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_1"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_2"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_3"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\f_000001"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\index"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\index.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_0.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_1.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_2.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_3.dcache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_0"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_1"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_2"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_3"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\Cache"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\Logs"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\WidevineCdm"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\CachedData"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Blizzard Entertainment"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Roaming\\Battle.net"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Battle.net"));
-                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Blizzard Entertainment"));
-                string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat");
-                using (StreamWriter writer = new StreamWriter(tempFilename))
-                {
+                // REDACTED
                     // GTAV/FiveM
-                    writer.WriteLine(@"echo off");
-                    writer.WriteLine("cls");
-                    writer.WriteLine("taskkill /f /im Steam.exe /t");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"set hostspath=%windir%\System32\drivers\etc\hosts");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSLicensing\HardwareID / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSLicensing\Store / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\WinRAR\ArcHistory / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 1282084573 - 1681065996 - 3115981261 - 1001 / va / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETEH KEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\ShowJumpView / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETEH KEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\WinRAR\ArcHistory / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\ShowJumpView / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 332004695 - 2829936588 - 140372829 - 1002 / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\bam\State\UserSettings\S - 1 - 5 - 21 - 1282084573 - 1681065996 - 3115981261 - 1001 / f");
-                    writer.WriteLine("cls");
+                    // REDACTED
                     // (EAC) EasyAntiCheat
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\EasyAntiCheat / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\EasyAntiCheat_EOS / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\EasyAntiCheat / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\EasyAntiCheat_EOS / f");
-                    writer.WriteLine("cls");
-                    writer.WriteLine(@"REG DELETE HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\EasyAntiCheat\Security / f");
-                    writer.WriteLine("cls");
+                    // REDACTED
                     // Fortnite
-                    writer.WriteLine("taskkill /f /im epicgameslauncher.exe");
-                    writer.WriteLine("taskkill /f /im EpicWebHelper.exe");
-                    writer.WriteLine("taskkill /f /im FortniteClient-Win64-Shipping_EAC.exe");
-                    writer.WriteLine("taskkill /f /im FortniteClient-Win64-Shipping_BE.exe");
-                    writer.WriteLine("taskkill /f /im FortniteLauncher.exe");
-                    writer.WriteLine("taskkill /f /im FortniteClient-Win64-Shipping.exe");
-                    writer.WriteLine("taskkill /f /im EpicGamesLauncher.exe");
-                    writer.WriteLine("taskkill /f /im EasyAntiCheat.exe");
-                    writer.WriteLine("taskkill /f /im BEService.exe");
-                    writer.WriteLine("taskkill /f /im BEServices.exe");
-                    writer.WriteLine("taskkill /f /im BattleEye.exe");
-                    writer.WriteLine("taskkill /f /im x64dbg.exe");
-                    writer.WriteLine("taskkill /f /im x32dbg.exe");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\Software\\Epic Games\" /f");
-                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Epic Games\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\Software\\Epic Games\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\com.epicgames.launcher\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\EpicGames\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Epic Games\" /f");
-                    writer.WriteLine("reg delete \"HKEY_CLASSES_ROOT\\com.epicgames.launcher\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\Software\\Epic Games\" /f");
-                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Classes\\com.epicgames.launcher\" /f");
-                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Epic Games\\Unreal Engine\\Hardware Survey\" /f");
-                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\Software\\Epic Games\\Unreal Engine\\Identifiers\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\com.epicgames.launcher\" /f");
-                    writer.WriteLine("reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\EpicGames\" /f");
-                    writer.WriteLine("reg delete \"HKEY_CURRENT_USER\\SOFTWARE\\EpicGames\" /f");
-                    writer.WriteLine("reg delete \"HKEY_USERS\\" + WindowsIdentity.GetCurrent().User.Value + "\\Software\\Epic Games\" /f");
+                    // REDACTED
                 }
                 Process process = Process.Start(tempFilename);
                 process.WaitForExit();
@@ -236,25 +124,17 @@ namespace SmokeySpoofer
                 console.Clear();
                 console.AppendText("Scanning Local System.. Please Wait!\n");
                 // Windows Profile GUID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")}");
+                // REDACTED
                 // Windows PC/Machine GUID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)}");
+                // REDACTED
                 // Windows PC/Machine ID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")}");
+                // REDACTED
                 // Windows Product ID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", null)}");
+                // REDACTED
                 // Windows Update GUID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", null).ToString()}");
+                // REDACTED
                 // Windows PC/Machine Hardware IDs
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")}");
-                string[] HardwareIds = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
-                StringBuilder Builder = new StringBuilder();
-                foreach (string HardwareId in HardwareIds)
-                {
-                    string FormattedId = $"HWID Found -> {HardwareId.Trim().Replace("{", "").Replace("}", "")}";
-                    Builder.AppendLine(FormattedId);
-                }
-                console.AppendText("\n" + Builder.ToString());
+                // REDACTED
                 // TODO: Add Hard Drive/SSD HWIDs
                 console.AppendText("\nAll HWIDs that have been Found have been Listed!");
             }
@@ -272,57 +152,23 @@ namespace SmokeySpoofer
                 console.Clear();
                 console.AppendText("Scanning Local System.. Please Wait!\n");
                 // Windows Profile GUID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\IDConfigDB\Hardware Profiles\0001", "HwProfileGuid", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!\n");
+                // REDACTED
                 // Windows PC/Machine GUID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography", "MachineGuid", null)} - Spoofed!\n");
+// REDACTED
                 // Windows PC/Machine ID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient", "MachineId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!\n");
+// REDACTED
                 // Windows Product ID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", null)} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", $"{RandomString(5)}-{RandomString(5)}-{RandomString(5)}-{RandomString(5)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductID", null)} - Spoofed!\n");
+// REDACTED
                 // Windows Update GUID/HWID
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", null).ToString()} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate", "SusClientId", null).ToString()} - Spoofed!\n");
+// REDACTED
                 // Windows PC/Machine Hardware IDs
-                console.AppendText($"\nHWID Found -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofing..");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}");
-                console.AppendText($"\nNew HWID -> {Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareId", null).ToString().Replace("{", "").Replace("}", "")} - Spoofed!\n");          
+                // REDACTED          
                 // List all the Hardware IDs/HWIDs
-                string[] HardwareIds1 = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
-                StringBuilder Builder = new StringBuilder();
-                foreach (string HardwareId1 in HardwareIds1)
-                {
-                    string FormattedId = $"HWID Found -> {HardwareId1.Trim().Replace("{", "").Replace("}", "")} - Spoofing..";
-                    Builder.AppendLine(FormattedId);
-                }
-                console.AppendText("\n" + Builder.ToString());
+// REDACTED
                 // Spoof the IDs/HWIDs we Found
-                string[] hardwareIds = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
-                if (hardwareIds != null)
-                {
-                    for (int i = 0; i < hardwareIds.Length; i++)
-                    {
-                        hardwareIds[i] = "{" + $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}" + "}";
-                    }
-                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", hardwareIds, RegistryValueKind.MultiString);
-                }
+// REDACTED
                 // ReList all the Hardware IDs/HWIDs that are now Spoofed!
-                string[] HardwareIds2 = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SystemInformation", "ComputerHardwareIds", new string[0]) as string[];
-                StringBuilder Builder2 = new StringBuilder();
-                foreach (string HardwareId3 in HardwareIds2)
-                {
-                    string FormattedId = $"New HWID -> {HardwareId3.Trim().Replace("{", "").Replace("}", "")} - Spoofed!";
-                    Builder2.AppendLine(FormattedId);
-                }
-                console.AppendText("\n" + Builder2.ToString());
+// REDACTED
                 console.AppendText("\nAll HWIDs that have been Found have been Spoofed!");
             }
             catch
